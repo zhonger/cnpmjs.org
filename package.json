@@ -73,7 +73,7 @@
     "pg-hstore": "2",
     "should": "8",
     "should-http": "*",
-    "sqlite3": "*",
+    "sqlite3": "3.1.8",
     "supertest": "2.0.0",
     "supertest-as-promised": "3",
     "thunk-mocha": "1"
