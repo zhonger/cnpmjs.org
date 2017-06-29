@@ -1,56 +1,55 @@
-# cnpmjs.org: Private npm registry and web for Company
+# 上海大学开源社区NPM镜像
 
-So `cnpm` is meaning: **Company npm**.
 
-## Registry
+## `npm.shuosc.org`: 基于`cnpmjs.org`构建的上大npm加速镜像
 
-- Our public registry: [r.cnpmjs.org](https://r.cnpmjs.org), syncing from [registry.npmjs.com](https://registry.npmjs.com)
-- [cnpmjs.org](/) version: <span id="app-version"></span>
+- 当前的镜像 [registry.npm.shuosc.org](https://registry.npm.shuosc.org)是从 [registry.npmjs.com](https://registry.npmjs.com)进行部分同步的.
+- [npm.shuosc.org](/) version: <span id="app-version"></span>
 - [Node.js](https://nodejs.org) version: <span id="node-version"></span>
-- For developers in China, please visit [the China mirror](https://npm.taobao.org). 中国用户请访问[国内镜像站点](https://npm.taobao.org)。
+- 对于教育网内的`npm`开发者, 请访问 [上海大学开源社区NPM镜像](https://npm.shuosc.org). 非教育网用户请访问[淘宝镜像站点](https://npm.taobao.org)。
 
 <div class="ant-table">
 <table class="downloads">
   <tbody>
     <tr>
-      <td class="count" id="total-packages"></td><td>total packages</td>
-      <td class="count" id="total-versions"></td><td>total package versions</td>
-      <td class="count" id="total-deletes"></td><td>total delete packages</td>
+      <td class="count" id="total-packages"></td><td>个模块</td>
+      <td class="count" id="total-versions"></td><td>个模块版本</td>
+      <td class="count" id="total-deletes"></td><td>次删除</td>
     </tr>
     <tr>
-      <td class="count"></td><td> downloads today</td>
-      <td class="count"></td><td> downloads in this week</td>
-      <td class="count"></td><td> downloads in this month</td>
+      <td class="count"></td><td> 次本日下载</td>
+      <td class="count"></td><td> 次本周下载</td>
+      <td class="count"></td><td> 次本月下载</td>
     </tr>
     <tr>
-      <td class="count"></td><td> downloads in the last day</td>
-      <td class="count"></td><td> downloads in the last week</td>
-      <td class="count"></td><td> downloads in the last month</td>
+      <td class="count"></td><td> 次昨日下载</td>
+      <td class="count"></td><td> 次上周下载</td>
+      <td class="count"></td><td> 次上月下载</td>
     </tr>
   </tbody>
 </table>
 </div>
 
 <div class="sync" style="display:none;">
-  <h3>Sync Status</h3>
+  <h3>同步状态</h3>
   <p id="sync-model"></p>
-  <p>Last sync time is <span id="last-sync-time"></span>. </p>
+  <p>上次同步完成时间： <span id="last-sync-time"></span>. </p>
   <div class="ant-alert ant-alert-info syncing">
     <span class="anticon ant-alert-icon anticon-info-circle"></span>
-    <span class="ant-alert-description">The sync worker is working in the backend now. </span>
+    <span class="ant-alert-description">同步工具正在后台运行. </span>
   </div>
   <div class="ant-table">
   <table class="sync-status">
     <tbody>
       <tr>
-        <td><span id="need-sync"></span> packages need to be sync</td>
-        <td class="syncing"><span id="left-sync"></span> packages and dependencies waiting for sync</td>
-        <td><span id="percent-sync"></span>% progress</td>
+        <td>共 <span id="need-sync"></span> 个模块需要同步</td>
+        <td class="syncing"><span id="left-sync"></span> 个模块正在等待同步</td>
+        <td>已完成<span id="percent-sync"></span>%</td>
       </tr>
       <tr>
-        <td><span id="success-sync"></span> packages and dependencies sync successed</td>
-        <td><span id="fail-sync"></span> packages and dependencies sync failed</td>
-        <td>last success: <span id="last-success-name"></span></td>
+        <td><span id="success-sync"></span> 个模块已完成同步</td>
+        <td><span id="fail-sync"></span> 个模块同步失败</td>
+        <td>最近同步成功的模块是: <span id="last-success-name"></span></td>
       </tr>
     </tbody>
   </table>
@@ -75,81 +74,55 @@ Badge URL: `https://cnpmjs.org/badge/v/cnpmjs.org.svg` ![cnpmjs.org-version-badg
 
 Badge URL: `https://cnpmjs.org/badge/d/cnpmjs.org.svg` ![cnpmjs.org-download-badge](//cnpmjs.org/badge/d/cnpmjs.org.svg)
 
-## Usage
+## 使用说明
 
-use our npm client [cnpm](https://github.com/cnpm/cnpm)(More suitable with cnpmjs.org and gzip support), you can get our client through npm:
+你可以使用我们定制的 [cnpm](https://github.com/cnpm/cnpm)(gzip压缩支持)命令行工具代替默认的`npm`:
 
 ```bash
-$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+$ npm install -g cnpm --registry=https://registry.npm.shuosc.org
 ```
 
-Or you can alias NPM to use it:
+或者你直接通过`npm`参数`alias`一个新命令:
 
 ```bash
-alias cnpm="npm --registry=https://registry.npm.taobao.org \
+alias cnpm="npm --registry=https://registry.npm.shuosc.org \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npm.taobao.org/mirrors/node \
 --userconfig=$HOME/.cnpmrc"
 
 #Or alias it in .bashrc or .zshrc
-$ echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taobao.org \
+$ echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.shuosc.org \
   --cache=$HOME/.npm/.cache/cnpm \
   --disturl=https://npm.taobao.org/mirrors/node \
   --userconfig=$HOME/.cnpmrc"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-### install
+### 安装模块
 
-Install package from [r.cnpmjs.org](//r.cnpmjs.org). When installing a package or version does not exist, it will try to install from the official registry([registry.npmjs.org](https://registry.npmjs.org)), and sync this package to cnpm in the backend.
+从 [registry.npm.shuosc.org](//registry.npm.shuosc.org)安装所有模块. 当安装的时候发现安装的模块还没有同步过来, 上大开源社区NPM会自动在后台进行同步，并且会让你从官方NPM([registry.npmjs.org](https://registry.npmjs.org))进行安装.下次你再安装这个模块的时候，就会直接从淘宝NPM安装了.
 
 ```bash
 $ cnpm install [name]
 ```
 
-### sync
+### 同步模块
 
-Only `cnpm` cli has this command. Meaning sync package from source npm.
+直接通过`sync`命令马上同步一个模块，只有 `cnpm` 命令行才有此功能.
 
 ```bash
 $ cnpm sync connect
 ```
 
-sync package on web: [sync/connect](/sync/connect)
+当然，你可以直接通过web方式来同步: [sync/connect](/sync/connect)
 
 ```bash
-$ open http://registry.npm.taobao.org/sync/connect
+$ open http://registry.npm.shuosc.org/sync/connect
 ```
 
-### publish / unpublish
+### 其他命令
 
-Only `admin` user can publish / unpublish package to private registry.
+支持`npm`除`publish`之外的所有命令，如:
 
 ```bash
-$ cnpm publish [name]
-$ cnpm unpublish [name]
+$ cnpm info connect
 ```
-
-### Other commands
-
-Support all the other npm commands. e.g.:
-
-```bash
-$ cnpm info cnpm
-```
-
-## TODO list
-
-@see Github [Issues](https://github.com/cnpm/cnpmjs.org/issues)
-
-## Histories
-
-Release [History](/history).
-
-## npmjs.org, cnpmjs.org and npm.taobao.org relation
-
-![npm&cnpm](https://cloud.githubusercontent.com/assets/543405/21505401/fd0b6220-cca1-11e6-86ed-599cc81bb03b.png)
-
-## Sponsors
-
-- [![阿里云](https://static.aliyun.com/images/www-summerwind/logo.gif)](http://click.aliyun.com/m/4288/) (2016.2 - now)
-- [![UCloud云计算](https://www.ucloud.cn/static/style/images/about/logo.png)](http://www.ucloud.cn?sem=sdk-CNPMJS) (2015.3 - 2016.3)

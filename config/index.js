@@ -27,7 +27,7 @@ var config = {
 
   registryPort: 7001,
   webPort: 7002,
-  bindingHost: '127.0.0.1', // only binding on 127.0.0.1 for local access
+  bindingHost: '0.0.0.0', // only binding on 127.0.0.1 for local access
 
   // debug mode
   // if in debug mode, some middleware like limit wont load
@@ -63,9 +63,7 @@ var config = {
   // default system admins
   admins: {
     // name: email
-    fengmk2: 'fengmk2@gmail.com',
-    admin: 'admin@cnpmjs.org',
-    dead_horse: 'dead_horse@qq.com',
+    zhonger: 'wuwozhonger@gmail.com',
   },
 
   // email notification for errors
@@ -81,7 +79,7 @@ var config = {
     }
   },
 
-  logoURL: 'https://os.alipayobjects.com/rmsportal/oygxuIUkkrRccUz.jpg', // cnpm logo image url
+  logoURL: 'https://s3.shu.aixinwu.org/shunpm.png', // cnpm logo image url
   adBanner: '',
   customReadmeFile: '', // you can use your custom readme file instead the cnpm one
   customFooter: '', // you can add copyright and site total script html here
